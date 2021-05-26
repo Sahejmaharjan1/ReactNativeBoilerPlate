@@ -1,0 +1,65 @@
+module.exports = {
+  root: true,
+  extends: '@react-native-community',
+  rules: {
+    'no-trailing-spaces': [2, {skipBlankLines: true}],
+    'sort-imports': 0,
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-filename-extension': [
+      1,
+      {
+        extensions: ['.js', '.jsx', '.tsx'],
+      },
+    ],
+    'react/jsx-curly-spacing': 2,
+    'react/jsx-equals-spacing': 2,
+    'react-hooks/exhaustive-deps': 'warn',
+    'react-hooks/rules-of-hooks': 'error',
+    'react/jsx-tag-spacing': [
+      2,
+      {
+        beforeSelfClosing: 'allow',
+      },
+    ],
+    // "jsx-quotes": ["error", "prefer-single"],
+    semi: 0,
+    'no-console': 0,
+    'no-underscore-dangle': 0,
+    indent: ['error', 2],
+    'no-use-before-define': 0,
+    'no-multi-str': 0,
+    'space-before-function-paren': 0,
+    'no-multiple-empty-lines': 0,
+    // 'object-curly-spacing': [
+    //   2,
+    //   'always',
+    //   {
+    //     objectsInObjects: true,
+    //   },
+    // ],
+    'comma-dangle': 0,
+    'no-useless-escape': 0,
+    'prefer-template': 0,
+    // "quotes": [
+    //   2,
+    //   "single",
+    //   {
+    //     "allowTemplateLiterals": true
+    //   }
+    // ],
+    'no-param-reassign': 0,
+    'prefer-destructuring': 0,
+    'object-shorthand': 0,
+    'no-path-concat': 0,
+    'no-bitwise': 0,
+    'arrow-body-style': 0,
+    'max-len': 0,
+    'no-await-in-loop': 0,
+    'no-multi-spaces': 0,
+    '@typescript-eslint/ban-ts-comment': 0,
+    '@typescript-eslint/no-non-null-assertion': 0,
+    'react/display-name': 0,
+    'react/prop-types': 0,
+    'arrow-parens': [2, 'as-needed'],
+  },
+};
