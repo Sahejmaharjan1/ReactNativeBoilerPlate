@@ -25,7 +25,7 @@ module.exports = {
     semi: 0,
     'no-console': 0,
     'no-underscore-dangle': 0,
-    indent: ['error', 2],
+    // indent: ['error', 2],
     'no-use-before-define': 0,
     'no-multi-str': 0,
     'space-before-function-paren': 0,
