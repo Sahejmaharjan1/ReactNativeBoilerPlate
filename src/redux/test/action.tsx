@@ -3,7 +3,8 @@ import {
   GET_USER_PROFILE_SUCCESS,
   GET_USER_PROFILE_FAILED,
 } from './constant';
-
+import {RequestLoginParams} from './types';
+import {ReducerActionType} from '../../utility/types';
 export type Payload = {
   data: unknown;
   message?: String;
@@ -27,6 +28,15 @@ export const getUserProfile = (): OnlyType => {
   };
 };
 
+//either follow this typescript pattern
+export const getUserProfileTest = (
+  params: RequestLoginParams,
+): ReducerActionType => ({
+  type: GET_USER_PROFILE,
+  payload: params,
+});
+
+//or follow this typescript pattern
 export const getUserProfileSuccess = (payload: Payload): Action => {
   return {
     type: GET_USER_PROFILE_SUCCESS,

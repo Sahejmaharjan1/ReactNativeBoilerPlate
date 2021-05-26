@@ -1,19 +1,28 @@
 import {
   all,
   call,
+  CallEffect,
   fork,
   put,
+  PutEffect,
   StrictEffect,
   takeEvery,
 } from 'redux-saga/effects';
 import {GET_USER_PROFILE} from './constant';
-import {getUserProfileSuccess, getUserProfileFailed} from './action';
+import {getUserProfileSuccess, getUserProfileFailed, Action} from './action';
 import {getUserProfileApi} from './api';
-
-function* handleGetUserProfile(): Generator<StrictEffect, void, any> {
+import {navigationRef} from '../../navigation/RootNavigationRef';
+// Generator<StrictEffect, void, any>
+function* handleGetUserProfile(): Generator<
+  CallEffect<any> | PutEffect<Action>,
+  void,
+  unknown
+> {
   try {
     const userProfileData = yield call(() => getUserProfileApi());
-    yield put(getUserProfileSuccess(userProfileData));
+    console.log('userprofileData', userProfileData);
+    yield put(getUserProfileSuccess({data: 'data', message: 'message'}));
+    navigationRef.current?.navigate('User');
   } catch (error) {
     yield put(getUserProfileFailed(error));
   }

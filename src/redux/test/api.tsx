@@ -7,7 +7,7 @@ export interface UserDetail {
 //   let a = email as any;
 //   return a;
 // };
-export const getUserProfileApi = (): Promise<any> => {
+export const getUserProfileApi = (): Promise<void> => {
   //hit api here and return api response
   let a = 'test' as any;
   return a;
