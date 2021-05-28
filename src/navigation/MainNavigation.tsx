@@ -5,10 +5,13 @@ import {Button, Text} from 'react-native';
 import UserNavigator from './UserNavigation';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {isReadyRef, navigationRef} from './RootNavigationRef';
+import {linking} from '../constants/DeepLinkConfig';
+import {DarkThemeConfig, DefaultThemeConfig} from '../constants/Theme';
 
 const AppNavigator = () => {
   const [boardingScreen, setBoardingScreen] = useState<null | boolean>(false);
   const [loading] = useState<boolean>(false);
+  const [theme] = useState<'dark' | 'light'>('light');
   useEffect(() => {
     return () => {
       isReadyRef.current = false;
@@ -29,6 +32,8 @@ const AppNavigator = () => {
   };
   return (
     <NavigationContainer
+      linking={linking}
+      theme={theme === 'dark' ? DarkThemeConfig : DefaultThemeConfig}
       ref={navigationRef}
       onReady={() => {
         isReadyRef.current = true;

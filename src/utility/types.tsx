@@ -12,6 +12,5 @@ export interface Error {
 export type Nullable<T> = T | null;
 
 export interface ReducerActionType extends Action {
-  /*eslint-disable*/
   payload: GenericObject<any>;
 }
