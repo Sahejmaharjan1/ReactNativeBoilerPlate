@@ -1,9 +1,9 @@
-import {Action} from './action';
 import {
   GET_USER_PROFILE,
   GET_USER_PROFILE_FAILED,
   GET_USER_PROFILE_SUCCESS,
 } from './constant';
+import {UserProfileActions} from './types';
 
 interface InitialStateProps {
   loading: boolean;
@@ -17,9 +17,9 @@ const InitialState: InitialStateProps = {
 };
 
 export default function userProfileReducer(
-  state: InitialStateProps = InitialState,
-  action: Action,
-): InitialStateProps {
+  state = InitialState,
+  action: UserProfileActions,
+) {
   switch (action.type) {
     case GET_USER_PROFILE: {
       return {...state, loading: true};

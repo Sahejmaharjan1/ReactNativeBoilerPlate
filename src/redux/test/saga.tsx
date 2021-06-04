@@ -9,17 +9,23 @@ import {
   takeEvery,
 } from 'redux-saga/effects';
 import {GET_USER_PROFILE} from './constant';
-import {getUserProfileSuccess, getUserProfileFailed, Action} from './action';
+import {
+  getUserProfileSuccess,
+  getUserProfileFailed,
+  getUserProfileTest,
+} from './action';
 import {getUserProfileApi} from './api';
 import {navigationRef} from '../../navigation/RootNavigationRef';
-// Generator<StrictEffect, void, any>
-function* handleGetUserProfile(): Generator<
-  CallEffect<any> | PutEffect<Action>,
-  void,
-  unknown
-> {
+import {UserProfileSaga} from './types';
+
+function* handleGetUserProfile({
+  payload,
+}: ReturnType<typeof getUserProfileTest>) {
+  const {page, limit} = payload;
   try {
-    const userProfileData = yield call(() => getUserProfileApi());
+    const userProfileData: UserProfileSaga = yield call(() =>
+      getUserProfileApi({page, limit}),
+    );
     console.log('userprofileData', userProfileData);
     yield put(getUserProfileSuccess({data: 'data', message: 'message'}));
     navigationRef.current?.navigate('User');

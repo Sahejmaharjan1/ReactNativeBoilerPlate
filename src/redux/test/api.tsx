@@ -1,14 +1,11 @@
-export interface UserDetail {
-  email: string;
-}
+import API from '@aws-amplify/api';
+import {RequestUserProfileParams, GetUserProfileResponse} from './types';
 
-// export const getUserProfileApi = (email: UserDetail): Promise<any> => {
-//   //hit api here and return api response
-//   let a = email as any;
-//   return a;
-// };
-export const getUserProfileApi = (): Promise<void> => {
-  //hit api here and return api response
-  let a = 'test' as any;
-  return a;
+export const getUserProfileApi = ({
+  page,
+  limit = 10,
+}: RequestUserProfileParams): Promise<GetUserProfileResponse> => {
+  const url = `userProfile?page=${page}&limit=${limit}`;
+  console.log('--- api is hit ');
+  return API.get('', url, {});
 };
