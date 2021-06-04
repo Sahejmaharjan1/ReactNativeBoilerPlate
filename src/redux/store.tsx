@@ -20,4 +20,5 @@ function configureStore() {
 }
 
 const storeObj = configureStore();
+export type AppDispatch = typeof storeObj.dispatch;
 export {storeObj};
