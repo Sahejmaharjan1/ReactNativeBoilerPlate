@@ -27,7 +27,7 @@ function* handleGetUserProfile({
       getUserProfileApi({page, limit}),
     );
     console.log('userprofileData', userProfileData);
-    yield put(getUserProfileSuccess({data: 'data', message: 'message'}));
+    yield put(getUserProfileSuccess(userProfileData));
     navigationRef.current?.navigate('User');
   } catch (error) {
     yield put(getUserProfileFailed(error));

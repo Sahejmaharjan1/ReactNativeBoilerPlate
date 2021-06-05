@@ -13,8 +13,7 @@ export interface RequestUserProfileParams extends GenericObject {
 }
 
 export interface RequestVideoSuccessPayload extends GenericObject {
-  data: unknown;
-  message: string;
+  data: GetUserProfileSuccessResponse;
 }
 
 export interface RequestVideoFailedPayload extends GenericObject {
@@ -66,4 +65,31 @@ export type UserProfileSaga = SagaReturnType<typeof getUserProfileApi>;
 export interface GetUserProfileResponse {
   data?: unknown;
   message: string;
+}
+
+export interface Doc {
+  __v: number;
+  _id: string;
+  categories: string[];
+  createdAt: Date;
+  endTime: string;
+  grade: string[];
+  id: string;
+  startTime: string;
+  tags: string[];
+  updatedAt: Date;
+  videoLink: string;
+}
+
+export interface GetUserProfileSuccessResponse {
+  docs: Doc[];
+  hasNextPage: boolean;
+  hasPrevPage: boolean;
+  limit: number;
+  nextPage: null;
+  page: number;
+  pagingCounter: number;
+  prevPage: null;
+  totalDocs: number;
+  totalPages: number;
 }

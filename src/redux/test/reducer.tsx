@@ -3,17 +3,17 @@ import {
   GET_USER_PROFILE_FAILED,
   GET_USER_PROFILE_SUCCESS,
 } from './constant';
-import {UserProfileActions} from './types';
+import {Doc, UserProfileActions} from './types';
 
 interface InitialStateProps {
   loading: boolean;
   error: string;
-  data: unknown;
+  data: [] | Array<Doc>;
 }
 const InitialState: InitialStateProps = {
   error: '',
   loading: false,
-  data: {},
+  data: [],
 };
 
 export default function userProfileReducer(
@@ -25,14 +25,19 @@ export default function userProfileReducer(
       return {...state, loading: true};
     }
     case GET_USER_PROFILE_SUCCESS: {
-      return {...state, error: '', data: action.payload, loading: false};
+      return {
+        ...state,
+        error: '',
+        data: action.payload.data.docs,
+        loading: false,
+      };
     }
     case GET_USER_PROFILE_FAILED: {
       return {
         ...state,
         loading: false,
-        error: action.payload.message as string,
-        data: {},
+        error: action.payload.message,
+        data: [],
       };
     }
     default: {
